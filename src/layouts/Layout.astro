@@ -4,6 +4,7 @@ interface Props {
 }
 
 const { title } = Astro.props;
+import '@fontsource-variable/onest';
 ---
 
 <!doctype html>
@@ -26,5 +27,8 @@ const { title } = Astro.props;
 <style is:global>
   html {
     background: #1d1f21;
+  }
+  body {
+    font-family: 'Onest', sans-serif;
   }
 </style>

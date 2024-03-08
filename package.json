@@ -1,5 +1,5 @@
 {
-  "name": "",
+  "name": "porfolio-astro-steven",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -12,6 +12,7 @@
   "dependencies": {
     "@astrojs/check": "^0.5.5",
     "@astrojs/tailwind": "^5.1.0",
+    "@fontsource-variable/onest": "^5.0.3",
     "astro": "^4.4.4",
     "tailwindcss": "^3.4.1",
     "typescript": "^5.3.3"
