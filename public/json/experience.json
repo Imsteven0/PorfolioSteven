@@ -1,0 +1,26 @@
+[
+	{
+		"id": 1,
+		"company": "TIC-Servicios",
+		"url": "https://tic-servicios.com/",
+		"level": "Junior - Full Stack Developer",
+		"timeWork": "Abril 2023 - Actualidad",
+		"desciption": "Desarrollo de aplicacion web rosbusta que comprende tres grades módulos: Operaciones, Administración e Infraestructura. La aplicación permite la gestión integral de la empresa, optimizando la eficiencia, el control y la toma de decisiones."
+	},
+	{
+		"id": 2,
+		"company": "TIC-Servicios",
+		"url": "https://tic-servicios.com/",
+		"level": "Junior - Backend Developer",
+		"timeWork": "Diciembre 2022 - Abril 2023",
+		"desciption": "Implementé una API que automatiza el envío de documentos electrónicos al Ministerio de Hacienda, liberando al personal humano de una carga de trabajo considerable y mejorando la eficiencia, el tiempo de envío, la calidad del servicio y el cumplimiento normativo. Se usaron tecnologias como Nodejs, Express y SQL Server."
+	},
+	{
+		"id": 3,
+		"company": "COCOCO",
+		"url": "https://cococo.co.cr/",
+		"level": "Junior - Full Stack Developer",
+		"timeWork": "Agosto 2022 - abril 2023",
+		"desciption": "Desempeñé un papel clave en el desarrollo de una aplicación interna de seguimiento de incidencias, donde diseñé e implementé funciones para la captura de incidencias, asignación a usuarios y notificaciones a través de Telegram o correo electrónico para recordatorios."
+	}
+]
