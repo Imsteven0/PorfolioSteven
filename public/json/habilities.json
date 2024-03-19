@@ -1,0 +1,74 @@
+[
+	{
+		"id": 1,
+		"description": "NodejS",
+		"imageSrc": "stacksIcon/nodejs.svg",
+		"color": "#21A366"
+	},
+	{
+		"id": 2,
+		"description": "React",
+		"imageSrc": "stacksIcon/react.svg",
+		"color": "#36ADC1"
+	},
+	{
+		"id": 3,
+		"description": "HTML",
+		"imageSrc": "stacksIcon/html.svg",
+		"color": "#FF6D00"
+	},
+	{
+		"id": 4,
+		"description": "CSS",
+		"imageSrc": "stacksIcon/css3.svg",
+		"color": "#027FC6"
+	},
+	{
+		"id": 5,
+		"description": "JavaScript",
+		"imageSrc": "stacksIcon/javascript.svg",
+		"color": "#FFD600"
+	},
+	{
+		"id": 6,
+		"description": "TaiwindCSS",
+		"imageSrc": "stacksIcon/tailwind-css.svg",
+		"color": "#299ABF"
+	},
+	{
+		"id": 7,
+		"description": "SQL Server",
+		"imageSrc": "stacksIcon/sql-server.svg",
+		"color": "#A41C1D"
+	},
+	{
+		"id": 8,
+		"description": "GitHub",
+		"imageSrc": "stacksIcon/github.svg",
+		"color": "#FFFFFF"
+	},
+	{
+		"id": 9,
+		"description": "Git",
+		"imageSrc": "stacksIcon/git.svg",
+		"color": "#F4511E"
+	},
+	{
+		"id": 10,
+		"description": "MongoDB",
+		"imageSrc": "stacksIcon/mongodb.svg",
+		"color": "#4CAF50"
+	},
+	{
+		"id": 11,
+		"description": "Astro",
+		"imageSrc": "stacksIcon/astro.svg",
+		"color": "#9F5F95"
+	},
+	{
+		"id": 12,
+		"description": "Express",
+		"imageSrc": "stacksIcon/express-js.svg",
+		"color": "#FFFFFF"
+	}
+]
