@@ -3,9 +3,92 @@ const date = new Date();
 const year = date.toLocaleDateString('es-ES', { year: 'numeric' });
 ---
 
-<div class="flex justify-center py-10 scroll-m-20 w-full mx-auto px-3 container lg:max-w-4xl md:max-w-2xl">
-	<span class="text-sm sm:text-center text-zinc-800/90 dark:text-zinc-200/90"
-		>©{year}
-		<a href="https://www.linkedin.com/in/steven-araya-gonzalez-228aa0217/" class="hover:underline">Steven Araya</a>. Todos los derechos reservados
-	</span>
-</div>
+<footer class="relative mt-20">
+	<!-- Decoración superior -->
+	<div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-indigo-500 to-transparent"></div>
+	
+	<div class="w-full mx-auto px-4 container lg:max-w-6xl md:max-w-4xl py-16">
+		<!-- Contenido principal del footer -->
+		<div class="grid md:grid-cols-3 gap-8 mb-12">
+			<!-- Columna 1: Info -->
+			<div class="space-y-4">
+				<h3 class="text-2xl font-bold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
+					Steven Araya
+				</h3>
+				<p class="text-gray-400 leading-relaxed">
+					Desarrollador web apasionado por crear experiencias digitales únicas y funcionales.
+				</p>
+			</div>
+
+			<!-- Columna 2: Links rápidos -->
+			<div class="space-y-4">
+				<h4 class="text-lg font-semibold text-white">Enlaces Rápidos</h4>
+				<nav class="flex flex-col gap-2">
+					<a href="#experiencia" class="text-gray-400 hover:text-indigo-400 transition-colors duration-300 flex items-center gap-2 group">
+						<i class="fa-solid fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
+						Experiencia
+					</a>
+					<a href="#habilidades" class="text-gray-400 hover:text-indigo-400 transition-colors duration-300 flex items-center gap-2 group">
+						<i class="fa-solid fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
+						Habilidades
+					</a>
+					<a href="#sobre-mi" class="text-gray-400 hover:text-indigo-400 transition-colors duration-300 flex items-center gap-2 group">
+						<i class="fa-solid fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
+						Sobre Mí
+					</a>
+				</nav>
+			</div>
+
+			<!-- Columna 3: Redes sociales -->
+			<div class="space-y-4">
+				<h4 class="text-lg font-semibold text-white">Conéctate</h4>
+				<div class="flex gap-4">
+					<a 
+						href="https://github.com/Imsteven0"
+						target="_blank"
+						rel="noopener noreferrer"
+						class="w-12 h-12 rounded-xl glass-effect flex items-center justify-center text-gray-400 hover:text-white hover:scale-110 transition-all duration-300 group"
+					>
+						<i class="fa-brands fa-github text-xl group-hover:text-purple-400"></i>
+					</a>
+					<a 
+						href="https://www.linkedin.com/in/steven-araya-gonzalez-228aa0217/"
+						target="_blank"
+						rel="noopener noreferrer"
+						class="w-12 h-12 rounded-xl glass-effect flex items-center justify-center text-gray-400 hover:text-white hover:scale-110 transition-all duration-300 group"
+					>
+						<i class="fa-brands fa-linkedin text-xl group-hover:text-indigo-400"></i>
+					</a>
+					<a 
+						href="mailto:stevenaraya005@gmail.com"
+						class="w-12 h-12 rounded-xl glass-effect flex items-center justify-center text-gray-400 hover:text-white hover:scale-110 transition-all duration-300 group"
+					>
+						<i class="fa-solid fa-envelope text-xl group-hover:text-amber-400"></i>
+					</a>
+				</div>
+			</div>
+		</div>
+
+		<!-- Copyright -->
+		<div class="pt-8 border-t border-white/10">
+			<div class="flex flex-col md:flex-row items-center justify-between gap-4">
+				<p class="text-gray-400 text-sm text-center md:text-left">
+					© {year} 
+					<a 
+						href="https://www.linkedin.com/in/steven-araya-gonzalez-228aa0217/" 
+						class="font-semibold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent hover:from-indigo-300 hover:to-purple-300 transition-all"
+					>
+						Steven Araya González
+					</a>
+					. Todos los derechos reservados.
+				</p>
+				<p class="text-gray-500 text-xs flex items-center gap-2">
+					<i class="fa-solid fa-code"></i>
+					Hecho con 
+					<i class="fa-solid fa-heart text-pink-500 animate-pulse"></i>
+					y Astro
+				</p>
+			</div>
+		</div>
+	</div>
+</footer>

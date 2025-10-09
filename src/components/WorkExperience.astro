@@ -2,24 +2,72 @@
 import experience from '../../public/json/experience.json';
 ---
 
-<section class="py-12 scroll-m-20 w-full mx-auto px-3 container lg:max-w-4xl md:max-w-2xl">
-	<h2 class="text-white text-3xl font-bold">
-		<i class="fa-solid fa-briefcase"></i> Experiencia laboral
-	</h2>
-	<article>
-		{
-			experience.map((job) => (
-				<div class="flex flex-col pt-6">
-					<div class="flex justify-between">
-						<a href={job.url} target="_blank" rel="noopener noreferrer" class="text-xl font-bold text-[#ff983f]">
-							{job.company}
-						</a>
-						<p class="text-gray-400">{job.timeWork}</p>
+<section class="py-20 scroll-m-20 w-full mx-auto px-4 container lg:max-w-6xl md:max-w-4xl" id="experiencia">
+	<!-- Título de sección -->
+	<div class="flex items-center gap-4 mb-12">
+		<div class="flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 shadow-lg shadow-indigo-500/50">
+			<i class="fa-solid fa-briefcase text-white text-xl"></i>
+		</div>
+		<h2 class="text-4xl md:text-5xl font-bold text-white">
+			Experiencia Laboral
+		</h2>
+	</div>
+
+	<!-- Timeline de experiencia -->
+	<div class="relative">
+		<!-- Línea vertical del timeline -->
+		<div class="absolute left-0 md:left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-indigo-500 via-purple-500 to-pink-500 hidden md:block"></div>
+		
+		<article class="space-y-8">
+			{
+				experience.map((job, index) => (
+					<div 
+						class="relative glass-effect rounded-2xl p-6 md:p-8 md:ml-20 hover:scale-[1.02] transition-all duration-300 group animate-fade-in-up"
+						style={`animation-delay: ${index * 0.2}s; opacity: 0;`}
+					>
+						<!-- Punto del timeline -->
+						<div class="absolute -left-2 md:-left-[5.5rem] top-8 w-4 h-4 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full ring-4 ring-[#0a0a0f] hidden md:block group-hover:scale-125 transition-transform"></div>
+						
+						<!-- Contenido -->
+						<div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
+							<div class="flex-1">
+								<a 
+									href={job.url} 
+									target="_blank" 
+									rel="noopener noreferrer" 
+									class="inline-block text-2xl md:text-3xl font-bold bg-gradient-to-r from-amber-400 to-orange-500 bg-clip-text text-transparent hover:from-amber-300 hover:to-orange-400 transition-all duration-300"
+								>
+									{job.company}
+									<i class="fa-solid fa-arrow-up-right-from-square text-sm ml-2 opacity-0 group-hover:opacity-100 transition-opacity"></i>
+								</a>
+								<p class="text-xl text-indigo-400 font-semibold mt-2">{job.level}</p>
+							</div>
+							<div class="flex items-center gap-2 text-gray-400 bg-white/5 px-4 py-2 rounded-lg border border-white/10">
+								<i class="fa-solid fa-calendar-days"></i>
+								<p class="font-medium">{job.timeWork}</p>
+							</div>
+						</div>
+						
+						<p class="text-lg text-gray-300 leading-relaxed">{job.desciption}</p>
+						
+						<!-- Decoración -->
+						<div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-indigo-500/10 to-purple-500/10 rounded-full filter blur-3xl -z-10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
 					</div>
-					<p class="text-white">{job.level}</p>
-					<p class="text-gray-300">{job.desciption}</p>
-				</div>
-			))
-		}
-	</article>
+				))
+			}
+		</article>
+	</div>
 </section>
+
+<style>
+	@keyframes fadeInUp {
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+	
+	.animate-fade-in-up {
+		transform: translateY(20px);
+	}
+</style>

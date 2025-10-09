@@ -1,47 +1,88 @@
-<section class="py-12 scroll-m-20 w-full mx-auto container px-3 lg:max-w-4xl md:max-w-2xl">
-	<div class="flex flex-row gap-4">
-		<img class="size-24 rounded-xl" src="/stevenAvatar.webp" alt="Steven Araya" />
-		<div class="flex items-center">
-			<h1 class="text-4xl font-bold text-white pb-2">Steven Araya Gonzalez</h1>
+<section class="pt-32 pb-20 md:pt-40 md:pb-32 scroll-m-20 w-full mx-auto container px-4 lg:max-w-6xl md:max-w-4xl">
+	<div class="animate-fade-in-up">
+		<!-- Avatar y nombre con efecto glass -->
+		<div class="flex flex-col md:flex-row gap-8 items-center md:items-start mb-8">
+			<!-- Avatar con efectos modernos -->
+			<div class="relative group">
+				<div
+					class="absolute -inset-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-pulse"
+				>
+				</div>
+				<img
+					class="relative size-32 md:size-40 rounded-2xl ring-4 ring-white/10 transform transition duration-500 group-hover:scale-105"
+					src="/stevenAvatar.webp"
+					alt="Steven Araya González"
+				/>
+			</div>
+
+			<!-- Título y nombre -->
+			<div class="flex flex-col justify-center text-center md:text-left gap-3">
+				<!-- Título profesional -->
+				<p class="text-lg md:text-xl font-semibold text-gray-400 tracking-wide uppercase">
+					Full-Stack Developer & Mobile Developer
+				</p>
+
+				<!-- Nombre completo con gradiente -->
+				<h1 class="text-5xl md:text-7xl font-bold leading-tight">
+					<span class="bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent"> Steven Araya González </span>
+				</h1>
+
+				<!-- Estado disponibilidad -->
+				<div class="flex items-center justify-center md:justify-start gap-2 mt-2">
+					<div class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+					<p class="text-gray-400 text-sm font-medium">Disponible para proyectos</p>
+				</div>
+			</div>
 		</div>
+
+		<!-- Descripción con glassmorphism -->
+		<article class="glass-effect rounded-2xl p-6 md:p-8 mb-8 hover:scale-[1.02] transition-transform duration-300">
+			<p class="text-xl md:text-2xl text-gray-300 leading-relaxed">
+				<strong class="bg-gradient-to-r from-amber-400 to-orange-500 bg-clip-text text-transparent font-bold">
+					Estudiante de Ingeniería en Tecnologías de Información
+				</strong>
+				en la Universidad Técnica Nacional, actualmente
+				<strong class="bg-gradient-to-r from-amber-400 to-orange-500 bg-clip-text text-transparent font-bold">
+					trabajando como desarrollador web
+				</strong>
+				y cursando el último cuatrimestre de la carrera. Con
+				<strong class="bg-gradient-to-r from-amber-400 to-orange-500 bg-clip-text text-transparent font-bold"> +1.3 años de experiencia </strong>
+				en el desarrollo de aplicaciones web.
+			</p>
+		</article>
+
+		<!-- Botones de contacto mejorados -->
+		<nav class="flex flex-wrap gap-4 justify-center md:justify-start">
+			<a
+				href="mailto:stevenaraya005@gmail.com"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="group relative inline-flex items-center justify-center gap-3 px-8 py-4 text-white font-semibold rounded-xl overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-amber-500/50"
+			>
+				<div class="absolute inset-0 bg-gradient-to-r from-amber-500 to-orange-600 transition-transform duration-300 group-hover:scale-110"></div>
+				<i class="fa-solid fa-envelope relative z-10 text-lg"></i>
+				<span class="relative z-10">Contáctame</span>
+			</a>
+
+			<a
+				href="https://www.linkedin.com/in/steven-araya-gonzalez-228aa0217/"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="group inline-flex items-center justify-center gap-3 px-8 py-4 text-white font-semibold rounded-xl glass-effect transition-all duration-300 hover:scale-105 hover:border-indigo-400/50"
+			>
+				<i class="fa-brands fa-linkedin text-lg group-hover:text-indigo-400 transition-colors"></i>
+				<span class="group-hover:text-indigo-400 transition-colors">LinkedIn</span>
+			</a>
+
+			<a
+				href="https://github.com/Imsteven0"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="group inline-flex items-center justify-center gap-3 px-8 py-4 text-white font-semibold rounded-xl glass-effect transition-all duration-300 hover:scale-105 hover:border-purple-400/50"
+			>
+				<i class="fa-brands fa-github text-lg group-hover:text-purple-400 transition-colors"></i>
+				<span class="group-hover:text-purple-400 transition-colors">GitHub</span>
+			</a>
+		</nav>
 	</div>
-	<article class="flex flex-col justify-center p-2">
-		<p class="mt-4 text-xl text-gray-800 dark:[&>strong]:text-[#ff983f] [&>strong]:text-[#ff983f] [&>strong]:font-semibold dark:text-gray-300">
-			<strong>Estudiante de Ingeniería en Tecnologías de Información</strong> en la Universidad Técnica Nacional, actualmente <strong
-				>trabajando como desarrollador web</strong
-			> y cursando el último cuatrimestre de la carrera. Con +1.3 años de experiencia en el desarrollo de aplicaciones web.
-		</p>
-	</article>
-	<nav class="flex flex-wrap gap-4 mt-4">
-		<a
-			href="mailto:stevenaraya005@gmail.com"
-			target="_blank"
-			rel="noopener noreferrer"
-			role="link"
-			class="inline-flex items-center justify-center gap-2 px-4 py-1 text-gray-800 transition bg-gray-100 border border-gray-300 rounded-full dark:bg-gray-800 dark:border-gray-600 dark:text-white focus-visible:ring-yellow-500/80 text-md hover:bg-gray-900 hover:border-gray-700 group max-w-fit hover:text-white focus:outline-none focus-visible:outline-none focus-visible:ring focus-visible:ring-white focus-visible:ring-offset-2 active:bg-black"
-		>
-			<i class="fa-solid fa-envelope"></i>
-			Email
-		</a>
-		<a
-			href="https://www.linkedin.com/in/steven-araya-gonzalez-228aa0217/"
-			target="_blank"
-			rel="noopener noreferrer"
-			role="link"
-			class="inline-flex items-center justify-center gap-2 px-4 py-1 text-gray-800 transition bg-gray-100 border border-gray-300 rounded-full dark:bg-gray-800 dark:border-gray-600 dark:text-white focus-visible:ring-yellow-500/80 text-md hover:bg-gray-900 hover:border-gray-700 group max-w-fit hover:text-white focus:outline-none focus-visible:outline-none focus-visible:ring focus-visible:ring-white focus-visible:ring-offset-2 active:bg-black"
-		>
-			<i class="fa-brands fa-linkedin"></i>
-			LinkedIn
-		</a>
-		<a
-			href="https://github.com/Imsteven0"
-			target="_blank"
-			rel="noopener noreferrer"
-			role="link"
-			class="inline-flex items-center justify-center gap-2 px-4 py-1 text-gray-800 transition bg-gray-100 border border-gray-300 rounded-full dark:bg-gray-800 dark:border-gray-600 dark:text-white focus-visible:ring-yellow-500/80 text-md hover:bg-gray-900 hover:border-gray-700 group max-w-fit hover:text-white focus:outline-none focus-visible:outline-none focus-visible:ring focus-visible:ring-white focus-visible:ring-offset-2 active:bg-black"
-		>
-			<i class="fa-brands fa-github"></i>
-			Github
-		</a>
-	</nav>
 </section>
