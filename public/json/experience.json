@@ -1,5 +1,13 @@
 [
 	{
+		"id": 0,
+		"company": "ALFACO - Proyecto Freelance",
+		"url": null,
+		"level": "Full-Stack Developer & Mobile Developer - Freelance",
+		"timeWork": "2024 - 2025",
+		"desciption": "Desarrollé desde cero un sistema de gestión de beneficios empresariales con tres aplicaciones integradas: API REST, panel administrativo web y app móvil multiplataforma. Implementé arquitectura offline-first con sincronización automática, autenticación multi-rol JWT, validación biométrica QR/NFC y reportería ejecutiva."
+	},
+	{
 		"id": 1,
 		"company": "TIC-Servicios",
 		"url": "https://tic-servicios.com/",

@@ -1,0 +1,164 @@
+[
+	{
+		"id": 1,
+		"slug": "alfaco",
+		"title": "ALFACO - Sistema de Gestión de Beneficios Empresariales",
+		"description": "Plataforma integral para la gestión de beneficios laborales (alimentación, transporte y deportes) con sincronización offline-first y control multi-proyecto. Gestiona más de 2,500 usuarios con capacidad de operación sin conexión.",
+		"longDescription": "Sistema completo de gestión empresarial que administra beneficios de alimentación, transporte y acceso a instalaciones deportivas para empleados de múltiples proyectos. El backend en Node.js/Express con PostgreSQL maneja autenticación multi-rol, restricción geográfica y reportes complejos. El frontend React/Vite ofrece dashboards interactivos con gráficos en tiempo real, importación masiva de datos Excel y generación de reportes PDF/Excel. La aplicación móvil React Native/Expo implementa una arquitectura offline-first con WatermelonDB, permitiendo validación de comidas/transporte mediante códigos QR/NFC incluso sin conexión, sincronizando automáticamente cuando hay red disponible. Incluye validación de asistencia a sitios deportivos con geolocalización y gestión de solicitudes de comidas por proyecto. El sistema maneja control de capacidad por proyecto, límites de consumo, períodos de trabajo y generación de gafetes con QR únicos.",
+		"image": "/alfaco-app.png",
+		"technologies": [
+			"React Native",
+			"Expo",
+			"React",
+			"Vite",
+			"Node.js",
+			"Express",
+			"PostgreSQL",
+			"Sequelize ORM",
+			"JWT",
+			"Docker",
+			"NativeWind",
+			"TailwindCSS",
+			"Push Notifications",
+			"OTA Updates"
+		],
+		"links": {
+			"github": null,
+			"demo": "https://play.google.com/store/apps/details?id=com.ticservicios.alfacoapp"
+		},
+		"featured": true,
+		"metrics": {
+			"users": "2,500+",
+			"performance": "Gestión de beneficios",
+			"label": "Empleados gestionados"
+		},
+		"highlights": [
+			"Arquitectura offline-first con sincronización automática",
+			"Sistema multi-rol con autenticación JWT",
+			"Validación biométrica mediante QR/NFC",
+			"Reportes ejecutivos con exportación Excel/PDF",
+			"Restricción geográfica (solo Costa Rica)",
+			"Dashboards interactivos con métricas en tiempo real",
+			"Importación masiva de datos mediante Excel",
+			"Gestión de múltiples proyectos simultáneos",
+			"Control de capacidad y límites por proyecto",
+			"Geolocalización para control de asistencia deportiva"
+		],
+		"features": [
+			"Gestión completa de beneficios de alimentación, transporte y deportes para empleados",
+			"Sistema de validación mediante códigos QR y tecnología NFC para registro de consumos",
+			"Operación completamente funcional sin conexión a internet con sincronización automática",
+			"Dashboards administrativos con visualización de datos en tiempo real y gráficos interactivos",
+			"Generación automática de reportes ejecutivos exportables en formatos PDF y Excel",
+			"Importación masiva de información de empleados mediante archivos Excel",
+			"Control de capacidad y límites de consumo personalizados por proyecto",
+			"Gestión multi-proyecto con configuraciones independientes y períodos de trabajo flexibles",
+			"Sistema de roles y permisos con autenticación segura mediante JWT",
+			"Generación de gafetes digitales con códigos QR únicos por empleado",
+			"Restricción de acceso geográfica limitada a usuarios en Costa Rica",
+			"Validación de asistencia a instalaciones deportivas mediante geolocalización precisa",
+			"Gestión de solicitudes de comidas por proyecto con aprobación administrativa",
+			"Notificaciones push para alertas y comunicados importantes",
+			"Actualizaciones Over-The-Air (OTA) para mejoras sin reinstalación manual"
+		],
+		"challenges": [
+			"Diseñar e implementar una arquitectura offline-first robusta con sincronización bidireccional confiable",
+			"Garantizar la integridad de datos durante la sincronización entre múltiples dispositivos sin conexión",
+			"Desarrollar un sistema de validación biométrica QR/NFC que funcione sin latencia en dispositivos móviles",
+			"Optimizar el rendimiento de la aplicación móvil con WatermelonDB para manejar grandes volúmenes de datos locales",
+			"Crear dashboards interactivos en tiempo real sin comprometer la experiencia de usuario",
+			"Implementar control de capacidad y límites dinámicos que se ajusten a múltiples proyectos simultáneos",
+			"Gestionar la complejidad de un sistema multi-rol con permisos granulares y seguros",
+			"Desarrollar lógica de restricción geográfica precisa y eficiente sin afectar privacidad",
+			"Coordinar la sincronización de datos entre backend PostgreSQL y bases de datos locales móviles",
+			"Asegurar la generación y validación única de códigos QR para prevenir duplicaciones o fraudes"
+		],
+		"impact": [
+			"Digitalización completa de la gestión de beneficios empresariales eliminando procesos manuales en papel",
+			"Mejora significativa en la eficiencia operativa con reducción de tiempos de validación y registro",
+			"Control preciso y en tiempo real del consumo de beneficios por empleado y proyecto",
+			"Reducción de costos administrativos mediante automatización de reportes y seguimiento",
+			"Mayor transparencia para empleados y administradores sobre uso de beneficios",
+			"Capacidad de operación ininterrumpida incluso en zonas con conectividad limitada o nula",
+			"Escalabilidad para gestionar múltiples proyectos y más de 2,500 usuarios simultáneamente",
+			"Toma de decisiones informada mediante reportes ejecutivos con datos actualizados"
+		]
+	},
+	{
+		"id": 2,
+		"slug": "siao-movil",
+		"title": "SIAO Móvil - App de Gestión de Riego SENARA",
+		"description": "Aplicación móvil oficial para usuarios de riego del SENARA (Servicio Nacional de Aguas Subterráneas, Riego y Avenamiento de Costa Rica). Permite gestionar parcelas, consultar estados de cuenta, realizar pagos y reportar incidencias desde cualquier lugar.",
+		"longDescription": "Aplicación móvil nativa desarrollada con React Native y Expo, disponible en Google Play Store y App Store, diseñada específicamente para agricultores y usuarios del sistema de riego SENARA en Costa Rica. La app permite a los usuarios gestionar de forma autónoma sus parcelas agrícolas, consultar su historial de consumo de agua, revisar estados de cuenta actualizados y realizar pagos mediante SINPE o transferencia bancaria. Los usuarios pueden calcular el consumo estimado de agua según su tipo de cultivo, reportar incidencias en las tomas de agua con geolocalización, recibir notificaciones push sobre cortes de servicio o avisos importantes, y acceder a un directorio completo del personal SENARA. La aplicación también incluye funcionalidades públicas que no requieren autenticación, como la calculadora de consumo por actividad agrícola y formularios de solicitudes para nuevos usuarios. El backend robusto desarrollado en Node.js/Express se conecta a SQL Server para gestionar toda la lógica de negocio, autenticación segura con JWT, y cumple con las normativas de Hacienda de Costa Rica para facturación electrónica. El sistema implementa actualizaciones OTA (Over-The-Air) para desplegar mejoras sin necesidad de que los usuarios actualicen manualmente desde las tiendas.",
+		"image": "/drat-app.png",
+		"technologies": [
+			"React Native",
+			"Expo",
+			"TypeScript",
+			"Node.js",
+			"Express",
+			"SQL Server",
+			"JWT Authentication",
+			"Push Notifications",
+			"OTA Updates"
+		],
+		"links": {
+			"github": null,
+			"demo": "Disponible en Google Play Store y App Store"
+		},
+		"featured": true,
+		"metrics": {
+			"users": "Agricultores activos",
+			"performance": "Gestión parcelas de riego",
+			"label": "Disponible en tiendas oficiales"
+		},
+		"highlights": [
+			"Aplicación oficial publicada en Google Play Store y App Store",
+			"Gestión autónoma de parcelas y derechos de agua",
+			"Sistema de pagos integrado (SINPE, transferencia bancaria)",
+			"Calculadora pública de consumo por tipo de cultivo",
+			"Reporte de incidencias con geolocalización",
+			"Notificaciones push para alertas de servicio",
+			"Actualizaciones OTA sin pasar por tiendas",
+			"Cumplimiento de normativas de Hacienda CR",
+			"Directorio completo de personal SENARA",
+			"Interfaz optimizada para usuarios con diferentes niveles técnicos"
+		],
+		"features": [
+			"Gestión integral de parcelas y derechos de agua personales",
+			"Consulta en tiempo real de estados de cuenta y balances pendientes",
+			"Registro histórico de consumo de agua por parcela",
+			"Sistema de pagos integrado (SINPE Móvil, transferencia bancaria)",
+			"Calculadora pública de consumo de agua según tipo de cultivo",
+			"Reporte de incidencias en tomas de agua con geolocalización",
+			"Notificaciones push para cortes de servicio y comunicados oficiales",
+			"Actualizaciones automáticas sin pasar por las tiendas (OTA)",
+			"Formularios de solicitud para nuevos usuarios sin registro previo",
+			"Directorio completo de contactos del personal SENARA por departamento",
+			"Gestión y actualización de perfil de usuario con validaciones",
+			"Visualización detallada de mediciones y tarifas por actividad agrícola",
+			"Recuperación de contraseña mediante correo electrónico certificado",
+			"Interfaz intuitiva optimizada para usuarios con diferentes niveles técnicos",
+			"Modo de operación parcial sin conexión para consultas básicas"
+		],
+		"challenges": [
+			"Diseñar una experiencia de usuario simple e intuitiva para agricultores con diferentes niveles de alfabetización digital",
+			"Integración segura con sistema legacy de SQL Server manteniendo compatibilidad con operaciones existentes",
+			"Implementar facturación electrónica conforme a las normativas de Hacienda de Costa Rica",
+			"Gestionar la seguridad de datos sensibles y transacciones financieras con estándares bancarios",
+			"Optimizar el rendimiento de la app con grandes volúmenes de datos históricos de consumo",
+			"Garantizar disponibilidad en zonas rurales con conectividad limitada mediante estrategias de caché",
+			"Proceso de publicación y certificación en Google Play Store y App Store cumpliendo todas las políticas",
+			"Implementar sistema de notificaciones confiable para alertas críticas de servicio",
+			"Coordinar actualizaciones OTA sin interrumpir la experiencia de usuarios activos"
+		],
+		"impact": [
+			"Digitalización completa del servicio de atención al usuario de riego",
+			"Reducción significativa de visitas presenciales a oficinas SENARA",
+			"Empoderamiento de agricultores con información en tiempo real de su consumo",
+			"Agilización de procesos de pago y reducción de morosidad",
+			"Mejora en la comunicación bidireccional entre SENARA y usuarios",
+			"Transparencia en el cálculo de tarifas y consumos de agua"
+		]
+	}
+]

@@ -1,4 +1,6 @@
 ---
+import { ViewTransitions } from 'astro:transitions';
+
 interface Props {
 	title: string;
 }
@@ -15,13 +17,14 @@ import '../styles/global.css';
 		<meta name="description" content="Steven Araya - Desarrollador Web Full Stack | Portafolio de Proyectos y Experiencia" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="keywords" content="desarrollador web, full stack, javascript, react, node.js, portfolio" />
-		<meta name="author" content="Steven Araya González" />
+		<meta name="author" content="Steven Araya " />
 		<link rel="icon" type="image/svg+xml" href="/devIcon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 		<link href="/css/fontawesome.min.css" rel="stylesheet" />
 		<link href="/css/brands.min.css" rel="stylesheet" />
 		<link href="/css/solid.min.css" rel="stylesheet" />
+		<ViewTransitions />
 	</head>
 	<body class="relative">
 		<!-- Efectos de fondo -->

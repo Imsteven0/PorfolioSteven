@@ -1,0 +1,154 @@
+---
+import projects from '../../public/json/projects.json';
+---
+
+<section class="py-20 scroll-m-20 w-full mx-auto px-4 container lg:max-w-6xl md:max-w-4xl" id="proyectos">
+	<!-- Título de sección -->
+	<div class="flex items-center gap-4 mb-12">
+		<div class="flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 shadow-lg shadow-cyan-500/50">
+			<i class="fa-solid fa-rocket text-white text-xl"></i>
+		</div>
+		<h2 class="text-4xl md:text-5xl font-bold text-white">
+			Proyectos Destacados
+		</h2>
+	</div>
+
+	<!-- Subtítulo -->
+	<p class="text-gray-400 text-lg md:text-xl mb-12">
+		Aquí te presento algunos de mis proyectos más destacados. Cada uno representa desafíos únicos y soluciones innovadoras.
+	</p>
+
+	<!-- Grid de Proyectos -->
+	<div class="grid md:grid-cols-1 gap-8">
+		{
+			projects.map((project, index) => (
+				<article 
+					class="project-card group relative glass-effect rounded-2xl overflow-hidden hover:scale-[1.02] transition-all duration-500"
+					style={`animation-delay: ${index * 0.2}s; opacity: 0;`}
+				>
+					<!-- Contenedor principal -->
+					<div class="p-6 md:p-8">
+						<!-- Grid de 2 columnas -->
+						<div class="grid md:grid-cols-2 gap-6">
+							<!-- Columna IZQUIERDA: Solo la Imagen -->
+							<div>
+								<a href={`/proyectos/${project.slug}`} class="relative overflow-hidden rounded-xl block">
+									<div 
+										class="aspect-[8/9.5] rounded-xl flex items-center justify-center relative group-hover:scale-105 transition-transform duration-500"
+										transition:name={`project-image-${project.slug}`}
+									>
+										{/* Imagen mockup mobile 800x950 */}
+										<img
+											src={project.image}
+											alt={project.title}
+											class="w-full h-full object-cover rounded-xl"
+										/>
+									</div>
+								</a>
+							</div>
+
+							<!-- Columna DERECHA: Título + Descripción + Stack + Métricas + Botón -->
+							<div class="flex flex-col justify-between space-y-6">
+								<!-- Título y descripción -->
+								<div>
+									<!-- Encabezado con título y badge -->
+									<div class="flex items-start justify-between mb-4">
+										<h3 class="text-2xl md:text-3xl font-bold text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-cyan-400 group-hover:to-blue-500 transition-all duration-300 flex-1 pr-4">
+											{project.title}
+										</h3>
+										{project.featured && (
+											<span class="flex-shrink-0 px-3 py-1 bg-gradient-to-r from-amber-500 to-orange-600 text-white text-xs font-bold rounded-full">
+												DESTACADO
+											</span>
+										)}
+									</div>
+
+									<!-- Descripción corta -->
+									<p class="text-gray-300 text-base md:text-lg leading-relaxed">
+										{project.description}
+									</p>
+								</div>
+
+								<!-- Stack Tecnológico -->
+								<div>
+									<p class="text-gray-500 text-sm font-semibold mb-3 flex items-center gap-2">
+										<i class="fa-solid fa-code"></i>
+										Stack Tecnológico:
+									</p>
+									<div class="flex flex-wrap gap-2">
+										{project.technologies.map((tech) => (
+											<span class="px-3 py-1.5 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-cyan-400/50 rounded-lg text-gray-300 text-sm font-medium transition-all duration-300 cursor-default">
+												{tech}
+											</span>
+										))}
+									</div>
+								</div>
+
+								<!-- Métricas -->
+								{project.metrics && (
+									<div class="flex flex-wrap gap-4 pb-6 border-b border-white/10">
+										<div class="flex items-center gap-3 bg-white/5 px-4 py-2 rounded-lg">
+											<i class="fa-solid fa-users text-cyan-400 text-xl"></i>
+											<div>
+												<p class="text-xl font-bold text-white">
+													{project.metrics.users}
+												</p>
+												<p class="text-gray-500 text-xs">{project.metrics.label}</p>
+											</div>
+										</div>
+										<div class="flex items-center gap-3 bg-white/5 px-4 py-2 rounded-lg">
+											<i class="fa-solid fa-bolt text-green-400 text-xl"></i>
+											<div>
+												<p class="text-xl font-bold text-white">
+													{project.metrics.performance}
+												</p>
+												<p class="text-gray-500 text-xs">Performance</p>
+											</div>
+										</div>
+									</div>
+								)}
+
+								<!-- Botón Ver Detalles -->
+								<div>
+									<a 
+										href={`/proyectos/${project.slug}`}
+										class="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-semibold rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/50 w-full justify-center"
+									>
+										<span>Ver proyecto completo</span>
+										<i class="fa-solid fa-arrow-right"></i>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Efecto decorativo -->
+					<div class="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-cyan-500/10 to-blue-500/10 rounded-full filter blur-3xl -z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+				</article>
+			))
+		}
+	</div>
+</section>
+
+<style>
+	.project-card {
+		opacity: 0;
+		animation: fadeInUp 0.6s ease-out forwards;
+	}
+	
+	@keyframes fadeInUp {
+		from {
+			opacity: 0;
+			transform: translateY(30px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	/* Animación para el ícono de chevron */
+	.group\/details[open] .fa-chevron-right {
+		transform: rotate(90deg);
+	}
+</style>
