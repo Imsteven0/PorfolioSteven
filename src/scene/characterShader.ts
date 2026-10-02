@@ -8,6 +8,8 @@ import * as THREE from 'three';
  *    los vértices por encima del cuello rotan alrededor de un pivote, con un peso que crece
  *    suavemente entre la base y la parte alta del cuello para que no haya un corte visible.
  *    Las alturas son fracciones del alto del modelo (0 = base del busto, 1 = coronilla).
+ *    El giro se aplica después de los morph targets (el parpadeo), para que la expresión gire
+ *    con la cabeza; el peso usa la posición original, así que no cambia al parpadear.
  *
  * 2. Color de la textura: punto medio entre lo realista y lo animado. La textura original es
  *    muy anaranjada; con saturación al 85 % y un leve tinte cálido, la piel queda en ~0.47 de
@@ -30,6 +32,9 @@ export type CharacterShader = {
   yaw: THREE.IUniform<number>;
   pitch: THREE.IUniform<number>;
   roll: THREE.IUniform<number>;
+  /** Pivote del cuello y coronilla, en coordenadas locales de la malla (para las estrellas). */
+  pivot: THREE.Vector3;
+  crown: THREE.Vector3;
 };
 
 export function setupCharacterShader(mesh: THREE.Mesh): CharacterShader {
@@ -42,12 +47,14 @@ export function setupCharacterShader(mesh: THREE.Mesh): CharacterShader {
   const center = new THREE.Vector3();
   geo.boundingBox!.getCenter(center);
 
+  const pivot = new THREE.Vector3(center.x, min.y + h * PIVOT_HEIGHT, center.z + (max.z - min.z) * PIVOT_DEPTH);
   const rig: CharacterShader = {
     yaw: { value: 0 },
     pitch: { value: 0 },
     roll: { value: 0 },
+    pivot,
+    crown: new THREE.Vector3(center.x, max.y, center.z),
   };
-  const pivot = new THREE.Vector3(center.x, min.y + h * PIVOT_HEIGHT, center.z + (max.z - min.z) * PIVOT_DEPTH);
   const neck = new THREE.Vector2(min.y + h * NECK_START, min.y + h * NECK_END);
   const heightRange = new THREE.Vector2(min.y, h);
 
@@ -96,8 +103,13 @@ export function setupCharacterShader(mesh: THREE.Mesh): CharacterShader {
       )
       .replace(
         '#include <begin_vertex>',
-        /* glsl */ `vec3 transformed = headRot * (vec3(position) - uHeadPivot) + uHeadPivot;
+        /* glsl */ `#include <begin_vertex>
         vHeight = (position.y - uHeightRange.x) / uHeightRange.y;`,
+      )
+      .replace(
+        '#include <morphtarget_vertex>',
+        /* glsl */ `#include <morphtarget_vertex>
+        transformed = headRot * (transformed - uHeadPivot) + uHeadPivot;`,
       );
 
     shader.fragmentShader = shader.fragmentShader

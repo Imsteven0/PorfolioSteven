@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "preview": "vite preview",
-    "optimize:model": "node scripts/optimize-model.mjs"
+    "optimize:model": "node scripts/optimize-model.mjs",
+    "check:reaction": "node --experimental-strip-types --no-warnings scripts/check-reaction.ts"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",

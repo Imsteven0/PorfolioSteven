@@ -3,4 +3,12 @@
 export const sceneState = {
   /** Puntero normalizado (-1 → 1, y hacia abajo) y última vez que se movió, en segundos. */
   pointer: { x: 0, y: 0, lastMove: -Infinity },
+  /** Golpecitos al personaje: la escena compara `count` con el último que procesó. */
+  poke: { count: 0, side: 0 },
 };
+
+/** `side`: dónde cayó el golpe respecto a la cabeza, de -1 (izquierda) a 1 (derecha). */
+export function poke(side: number) {
+  sceneState.poke.count++;
+  sceneState.poke.side = side;
+}

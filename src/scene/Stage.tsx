@@ -50,7 +50,6 @@ export default function Stage() {
   return (
     <div ref={host} style={{ width: '100%', height: '100%' }}>
     <Canvas
-      className="!pointer-events-none"
       frameloop={visible ? 'always' : 'never'}
       // Renderiza al doble de resolución para suavizar textura y silueta en movimiento.
       dpr={2}

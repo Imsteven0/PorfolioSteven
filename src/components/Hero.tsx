@@ -1,12 +1,15 @@
 import { lazy, Suspense } from 'react';
 import { profile, projects } from '../content';
 import { Loader } from './Loader';
+import { poke } from '../scene/store';
 const Stage = lazy(() => import('../scene/Stage'));
 
 export function Hero() {
   return <section id="inicio" className="hero">
     <p className="hero-word" aria-hidden="true">Portafolio</p>
     <div className="hero-portrait" role="img" aria-label="Retrato 3D de Steven Araya"><Suspense fallback={null}><Stage /></Suspense><Loader /></div>
+    {/* Equivalente por teclado del clic sobre el personaje; solo se ve al enfocarlo. */}
+    <button type="button" className="portrait-poke" onClick={() => poke(Math.random() < 0.5 ? -1 : 1)}>Darle un golpecito a Steven</button>
     <div className="hero-intro" data-reveal>
       <p className="handwritten">Hola, soy</p>
       <h1>{profile.firstName}<br />{profile.lastName}<span className="sr-only"> — {profile.role}</span></h1>
