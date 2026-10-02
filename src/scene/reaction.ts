@@ -17,6 +17,9 @@
 const FREQUENCY = 15; // rad/s del resorte: ~2.4 oscilaciones por segundo
 const DAMPING = 0.22; // < 1: rebota un par de veces antes de quedarse quieto
 const STEP = 1 / 240; // paso fijo de integración: se mueve igual a 30 o a 144 fps
+// Tras una pausa larga (portada fuera de pantalla, pestaña en segundo plano) se simula como mucho
+// esto: basta para que el resorte quede en reposo, y el tiempo perdido no se acumula.
+const MAX_CATCH_UP = 2;
 const MAX_ANGLE = 0.35; // con más giro la malla del cuello se estira demasiado
 const IMPULSE = { roll: 0.2, pitch: 0.12, yaw: 0.1 }; // amplitud aproximada de un golpe
 
@@ -67,6 +70,7 @@ export class HeadReaction {
   private starsFrom = -Infinity;
   private starsUntil = -Infinity;
   private lastHit = -Infinity;
+  private lastUpdate = Number.NaN;
   private blinkAt = -Infinity;
   private nextBlink = Number.NaN;
 
@@ -85,6 +89,7 @@ export class HeadReaction {
   hit(time: number, side: number) {
     const s = Number.isFinite(side) ? clamp(side, -1, 1) : 0;
     this.lastHit = time;
+    if (Number.isNaN(this.lastUpdate)) this.lastUpdate = time; // el reloj arranca con el primer evento
     this.velocity.roll += IMPULSE.roll * s * FREQUENCY;
     this.velocity.yaw += IMPULSE.yaw * s * FREQUENCY;
     this.velocity.pitch += IMPULSE.pitch * FREQUENCY;
@@ -105,8 +110,13 @@ export class HeadReaction {
     this.starsUntil = Math.max(this.starsUntil, end);
   }
 
-  update(time: number, dt: number) {
-    const frame = clamp(dt, 0, 0.1); // tras una pestaña en segundo plano no da un salto
+  /**
+   * `time` en segundos, de un reloj que no se detiene ni retrocede: lo que pasó mientras la escena
+   * estaba pausada se resuelve aquí (el golpe termina, las estrellas se van) en vez de quedar congelado.
+   */
+  update(time: number) {
+    const frame = Number.isNaN(this.lastUpdate) ? 0 : clamp(time - this.lastUpdate, 0, MAX_CATCH_UP);
+    this.lastUpdate = time;
     let remaining = frame;
     while (remaining > 1e-6) {
       const h = Math.min(STEP, remaining);

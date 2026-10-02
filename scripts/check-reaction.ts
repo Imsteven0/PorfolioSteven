@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { HeadReaction } from '../src/scene/reaction.ts';
 
 function simulate(reaction: HeadReaction, from: number, to: number, fps: number) {
-  for (let t = from; t < to; t += 1 / fps) reaction.update(t + 1 / fps, 1 / fps);
+  for (let t = from; t < to; t += 1 / fps) reaction.update(t + 1 / fps);
 }
 
 // Un golpe a la derecha: la cabeza se inclina hacia la izquierda, aparecen estrellas y luego todo vuelve a reposo.
@@ -51,7 +51,7 @@ function simulate(reaction: HeadReaction, from: number, to: number, fps: number)
   const r = new HeadReaction(() => 0.5); // intervalo fijo: 2.5 + 0.5 * 3.5 = 4.25 s
   let closedAt = -1;
   for (let t = 0; t < 6; t += 1 / 60) {
-    r.update(t, 1 / 60);
+    r.update(t);
     if (r.eyesClosed > 0.95 && closedAt < 0) closedAt = t;
   }
   assert.ok(closedAt > 4 && closedAt < 4.5, `parpadea solo (cerró a los ${closedAt.toFixed(2)} s)`);
@@ -64,11 +64,25 @@ function simulate(reaction: HeadReaction, from: number, to: number, fps: number)
   assert.ok(r.eyesClosed < 0.01, 'y los vuelve a abrir');
 }
 
+// Volver tras una pausa (portada fuera de pantalla): el golpe ya terminó, sin estrellas ni mareo.
+{
+  const r = new HeadReaction(() => 0.5);
+  for (let i = 0; i < 3; i++) r.hit(i * 0.1, 1);
+  simulate(r, 0, 0.3, 60);
+  assert.equal(r.dizzy, true);
+  r.update(30);
+  assert.equal(r.dizzy, false, 'el mareo terminó durante la pausa');
+  assert.equal(r.starsVisible, 0, 'las estrellas no reaparecen');
+  for (const value of Object.values(r.angles)) assert.ok(Math.abs(value) < 0.002, 'la cabeza está en reposo');
+}
+
 // Entradas raras no rompen nada.
 {
   const r = new HeadReaction();
   r.hit(0, Number.NaN);
-  r.update(0.016, 10); // un dt enorme (pestaña en segundo plano) se recorta
+  r.update(0.016);
+  r.update(1e6); // pausa enorme: se simulan como mucho MAX_CATCH_UP segundos
+  r.update(5); // un reloj que retrocede no rompe nada
   for (const value of Object.values(r.angles)) assert.ok(Number.isFinite(value));
 }
 

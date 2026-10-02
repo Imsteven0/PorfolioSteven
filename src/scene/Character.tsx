@@ -181,7 +181,10 @@ export function Character() {
 
   useFrame((state, delta) => {
     const dt = Math.min(delta, 0.1);
-    const time = state.clock.elapsedTime;
+    // Reloj de pared, no state.clock: R3F lo reinicia a 0 cada vez que la portada vuelve a la
+    // pantalla (frameloop 'never' → 'always') y los tiempos guardados quedaban en el futuro: las
+    // estrellas reaparecían. Este sigue corriendo fuera de pantalla y nunca retrocede.
+    const time = performance.now() / 1000;
     const { width, height } = state.size;
     const aspect = width / height;
 
@@ -221,7 +224,7 @@ export function Character() {
       seenPokes.current = pokes.count;
       reaction.hit(time, pokes.side);
     }
-    reaction.update(time, dt);
+    reaction.update(time);
     const motion = reducedMotion.current ? 0 : 1;
     const hit = reaction.angles;
 
