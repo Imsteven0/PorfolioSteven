@@ -5,8 +5,36 @@ Vite + React + TypeScript · React Three Fiber + drei · GSAP ScrollTrigger · T
 ```bash
 npm install
 npm run dev        # http://localhost:5173
-npm run build      # genera dist/ listo para Vercel / Netlify
+npm run build      # genera dist/ listo para Cloudflare Pages
 ```
+
+## Despliegue en Cloudflare Pages
+
+**Opción A — conectado a GitHub (recomendado, despliega solo en cada push):**
+
+1. Cloudflare → *Workers & Pages* → *Create* → *Pages* → *Connect to Git* → elige este repositorio.
+2. Configuración de build:
+
+   | Campo                  | Valor           |
+   | ---------------------- | --------------- |
+   | Framework preset       | `Vite` (o *None*) |
+   | Build command          | `npm run build` |
+   | Build output directory | `dist`          |
+   | Production branch      | `master`        |
+
+   La versión de Node se toma de `.node-version` (24); no hace falta variable `NODE_VERSION`.
+3. *Save and Deploy*. Cada push a `master` publica; las demás ramas generan vistas previas.
+
+**Opción B — subida directa desde tu PC (sin conectar GitHub):**
+
+```bash
+npm run build
+npx wrangler pages deploy dist --project-name steven-araya-portfolio
+```
+
+`public/_headers` define la caché (JS/CSS con hash: 1 año; modelo e imágenes: 1 semana)
+y cabeceras básicas de seguridad. El archivo más grande del sitio es el modelo 3D
+(10.8 MB), por debajo del límite de 25 MiB por archivo de Pages.
 
 ## Dónde tocar
 
