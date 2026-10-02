@@ -22,7 +22,7 @@ export function Hero() {
       <dl className="hero-stats">
         <div><dt>Años de<br />experiencia</dt><dd>{profile.yearsOfExperience}+</dd></div>
         <div><dt>Apps en tiendas<br />oficiales</dt><dd>{projects.length.toString().padStart(2, '0')}</dd></div>
-        <div><dt>Empleados en<br />ALFACO</dt><dd>2.5k+</dd></div>
+        <div><dt>Descargas en<br />tiendas</dt><dd>+400</dd></div>
       </dl>
     </aside>
     <div className="hero-bottom"><span>Desarrollo desde {profile.location}</span><a href="#proyectos">Explora mi trabajo <span aria-hidden="true">↓</span></a><span>{new Date().getFullYear()}</span></div>

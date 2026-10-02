@@ -98,6 +98,7 @@ export type Job = {
 export const experience: Job[] = [
   {
     company: 'ALFACO',
+    url: 'https://www.alfa.cr/',
     role: 'Full-Stack & Mobile Developer · Freelance',
     period: '2024 — 2025',
     description:
