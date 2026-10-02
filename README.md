@@ -3,9 +3,10 @@
 Vite + React + TypeScript · React Three Fiber + drei · GSAP ScrollTrigger · Tailwind CSS v4.
 
 ```bash
-npm install
-npm run dev        # http://localhost:5173
-npm run build      # genera dist/ listo para Cloudflare Pages
+pnpm install
+pnpm dev                 # http://localhost:5173
+pnpm build               # genera dist/ listo para Cloudflare Pages
+pnpm check:reaction      # comprueba la lógica del golpecito y el parpadeo
 ```
 
 ## Despliegue en Cloudflare Pages
@@ -18,23 +19,24 @@ npm run build      # genera dist/ listo para Cloudflare Pages
    | Campo                  | Valor           |
    | ---------------------- | --------------- |
    | Framework preset       | `Vite` (o *None*) |
-   | Build command          | `npm run build` |
+   | Build command          | `pnpm build`    |
    | Build output directory | `dist`          |
    | Production branch      | `master`        |
 
    La versión de Node se toma de `.node-version` (24); no hace falta variable `NODE_VERSION`.
+   Pages instala con pnpm al detectar `pnpm-lock.yaml`.
 3. *Save and Deploy*. Cada push a `master` publica; las demás ramas generan vistas previas.
 
 **Opción B — subida directa desde tu PC (sin conectar GitHub):**
 
 ```bash
-npm run build
-npx wrangler pages deploy dist --project-name steven-araya-portfolio
+pnpm build
+pnpm dlx wrangler pages deploy dist --project-name steven-araya-portfolio
 ```
 
 `public/_headers` define la caché (JS/CSS con hash: 1 año; modelo e imágenes: 1 semana)
 y cabeceras básicas de seguridad. El archivo más grande del sitio es el modelo 3D
-(10.8 MB), por debajo del límite de 25 MiB por archivo de Pages.
+(10.1 MB), por debajo del límite de 25 MiB por archivo de Pages.
 
 ## Dónde tocar
 
@@ -46,17 +48,28 @@ y cabeceras básicas de seguridad. El archivo más grande del sitio es el modelo
 | Cómo sigue el cursor / animación reposo | `src/scene/Character.tsx`                  |
 | Cuello que gira, color de la piel, borde | `src/scene/characterShader.ts` (`NECK_*`, `SATURATION`, `TINT`, `RIM_COLOR`) |
 | Luces                                   | `src/scene/Stage.tsx`                      |
+| Golpecito, mareo, ritmo del parpadeo    | `src/scene/reaction.ts`                    |
+| Estrellas, zona que recibe el clic      | `src/scene/Character.tsx` (`STAR_*`, `HEAD_FROM`) |
+| Forma de los párpados                   | `scripts/blender/blink.py` (y regenerar el modelo) |
 
 ## Modelo 3D
 
-El original exportado está en `3d/`. Para regenerar la versión web (`public/models/steven.glb`):
+El original exportado está en `3d/`. La versión web (`public/models/steven.glb`) se genera en
+dos pasos; el primero necesita [Blender](https://www.blender.org/) 4.2+ (se ejecuta sin ventana):
 
 ```bash
-node scripts/optimize-model.mjs
+# 1. Agrega los párpados (morphs `blink` y `blink_surface`). Con previews opcionales en otra carpeta.
+#    check-blink.py hace lo mismo y además comprueba el resultado.
+blender -b --factory-startup -P scripts/blender/blink.py -- \
+  3d/3d-jutsu-Untitled-3D-Jutsu-2026-10-02-03-02-48.glb 3d/steven-blink.glb
+
+# 2. Quita el escenario de exportación y guarda los morphs como sparse.
+pnpm optimize:model
 ```
 
-Quita el escenario de exportación y conserva la calidad original: **10.8 MB**.
-No comprime ni modifica vértices, normales, UVs o imágenes.
+El resultado pesa **10.1 MB** y conserva la calidad original: no comprime ni modifica
+vértices, normales, UVs o imágenes del original. `3d/steven-blink.glb` es intermedio y no se versiona.
+Al cambiar el modelo, sube el `?v=` de `MODEL_URL` (`Character.tsx`) y del preload (`index.html`).
 
 ### Cómo se ve (y por qué)
 
