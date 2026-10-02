@@ -27,10 +27,15 @@ export default function App() {
       if (!bounds || e.clientY > bounds.bottom || e.clientY < bounds.top) return;
       sceneState.pointer.x = ((e.clientX - bounds.left) / bounds.width) * 2 - 1;
       sceneState.pointer.y = ((e.clientY - bounds.top) / bounds.height) * 2 - 1;
-      if (e.pointerType === 'mouse') sceneState.pointer.lastMove = performance.now() / 1000;
+      // Con mouse mira al cursor; en táctil, al dedo mientras toca (pointermove solo llega con contacto).
+      sceneState.pointer.lastMove = performance.now() / 1000;
     };
     window.addEventListener('pointermove', onMove, { passive: true });
-    return () => window.removeEventListener('pointermove', onMove);
+    window.addEventListener('pointerdown', onMove, { passive: true });
+    return () => {
+      window.removeEventListener('pointermove', onMove);
+      window.removeEventListener('pointerdown', onMove);
+    };
   }, []);
   return <><Nav /><main><Hero /><Projects /><About /><Experience /><Skills /><Contact /></main></>;
 }

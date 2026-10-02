@@ -11,7 +11,10 @@ const PORTRAIT_HEIGHT = 0.57;
 const PORTRAIT_WIDTH = 0.58;
 const CAMERA_POS = new THREE.Vector3(0, 1.4, 2.6);
 const LOOK_AT = new THREE.Vector3(0, 1.4, 0);
-const IDLE_AFTER = 2.5; // segundos sin mover el mouse antes de que mire por su cuenta
+const IDLE_AFTER = 2.5; // segundos sin mover el mouse (o sin tocar) antes de que mire por su cuenta
+// En reposo mira a puntos al azar y se queda un rato en cada uno: en celular, sin cursor, es su
+// movimiento principal; un vaivén suave casi no se notaba.
+const GLANCE = { yaw: 0.2, pitch: 0.05, every: [1.2, 3.2] };
 const HEAD_HALF_WIDTH = 0.09; // en unidades de la escena: un golpe a esta distancia del centro cuenta como lateral
 // Solo la cabeza reacciona: de la barbilla para arriba, en fracción del alto del modelo (0 = base, 1 = coronilla).
 // Medido en el perfil frontal de la malla: el cuello termina en ~0.40 y la barbilla empieza en ~0.42.
@@ -118,6 +121,7 @@ export function Character() {
   const crownWorld = useRef(new THREE.Vector3(0, 1.6, 0));
 
   const gaze = useRef({ yaw: 0, pitch: 0 });
+  const glance = useRef({ yaw: 0, pitch: 0, next: 0 });
   const reducedMotion = useRef(false);
 
   useEffect(() => {
@@ -206,15 +210,21 @@ export function Character() {
       yaw = 0;
       pitch = 0;
     } else if (idle) {
-      yaw = Math.sin(time * 0.35) * 0.12 + Math.sin(time * 0.7) * 0.025;
-      pitch = Math.sin(time * 0.3) * 0.025 - 0.015;
+      const g = glance.current;
+      if (time >= g.next) {
+        g.yaw = (Math.random() * 2 - 1) * GLANCE.yaw;
+        g.pitch = (Math.random() * 2 - 1) * GLANCE.pitch - 0.015;
+        g.next = time + GLANCE.every[0] + Math.random() * (GLANCE.every[1] - GLANCE.every[0]);
+      }
+      yaw = g.yaw + Math.sin(time * 0.7) * 0.02;
+      pitch = g.pitch;
     } else {
       hero.getWorldPosition(_head).y += 0.12; // altura aproximada de los ojos
       _head.project(camera);
       yaw = THREE.MathUtils.clamp((pointer.x - _head.x) * 0.4, -0.32, 0.32);
       pitch = THREE.MathUtils.clamp((pointer.y + _head.y) * 0.2, -0.1, 0.12);
     }
-    const speed = idle ? 1.5 : 5;
+    const speed = idle ? 3 : 5;
     gaze.current.yaw = THREE.MathUtils.damp(gaze.current.yaw, yaw, speed, dt);
     gaze.current.pitch = THREE.MathUtils.damp(gaze.current.pitch, pitch, speed, dt);
 
