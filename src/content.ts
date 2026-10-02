@@ -34,6 +34,12 @@ export type Project = {
   year: string;
   summary: string;
   image: string;
+  /** Cómo se muestra la imagen: maqueta de teléfonos (PNG recortado) o captura dentro de una ventana. */
+  media: 'phones' | 'screen';
+  /** Textos sobre la imagen: etiqueta arriba a la derecha, palabra de fondo y lema abajo. */
+  tag: string;
+  watermark: string;
+  tagline: string;
   metric: { value: string; label: string };
   highlights: string[];
   stack: string[];
@@ -49,6 +55,10 @@ export const projects: Project[] = [
     summary:
       'Plataforma integral para gestionar beneficios laborales de alimentación, transporte y deportes en múltiples proyectos. Tres aplicaciones integradas: API REST, panel administrativo web y app móvil offline-first que valida consumos con QR/NFC incluso sin conexión.',
     image: '/projects/alfaco.webp',
+    media: 'phones',
+    tag: 'Plataforma integral',
+    watermark: 'ALFACO',
+    tagline: 'Beneficios. Sin límites.',
     metric: { value: '2,500+', label: 'empleados gestionados' },
     highlights: [
       'Arquitectura offline-first con sincronización bidireccional (WatermelonDB)',
@@ -71,6 +81,10 @@ export const projects: Project[] = [
     summary:
       'Aplicación oficial para usuarios de riego del SENARA (Servicio Nacional de Aguas Subterráneas, Riego y Avenamiento de Costa Rica). Los agricultores gestionan parcelas, consultan estados de cuenta, pagan y reportan incidencias desde cualquier lugar.',
     image: '/projects/siao-movil.webp',
+    media: 'phones',
+    tag: 'App oficial · SENARA',
+    watermark: 'DRAT',
+    tagline: 'El campo, conectado.',
     metric: { value: 'iOS + Android', label: 'publicada en tiendas oficiales' },
     highlights: [
       'Pagos integrados con SINPE Móvil y transferencia bancaria',
@@ -85,7 +99,79 @@ export const projects: Project[] = [
       href: 'https://play.google.com/store/apps/details?id=com.ticservicios.dratmovil',
     },
   },
+  {
+    slug: 'sol-y-mar',
+    title: 'Sol y Mar',
+    client: 'Restaurante — Pedidos y facturación',
+    year: '2025 — 2026',
+    summary:
+      'Sistema completo para un restaurante: panel administrativo, página pública para pedir en línea y app nativa para meseros. Gestiona menú con modificadores, mesas, reservaciones, caja y reportes, y emite facturación electrónica ante Hacienda de Costa Rica.',
+    image: '/projects/sol-y-mar.webp',
+    media: 'screen',
+    tag: 'Sistema para restaurante',
+    watermark: 'SOL Y MAR',
+    tagline: 'Del pedido a la factura.',
+    metric: { value: '3 apps', label: 'panel web, pedidos en línea y meseros' },
+    highlights: [
+      'Pedidos en línea públicos con protección anti-bots (Cloudflare Turnstile)',
+      'Órdenes, mesas y reservaciones sincronizadas en tiempo real por WebSocket',
+      'Facturación electrónica: XML firmado y envío a Hacienda de Costa Rica',
+      'App nativa para meseros con notificaciones push de nuevos pedidos',
+      'Caja, horarios del equipo y reportes en PDF / Excel',
+    ],
+    stack: ['React', 'Vite', 'TanStack Query', 'Zustand', 'Node.js', 'Express', 'PostgreSQL', 'Sequelize', 'WebSocket', 'React Native', 'Expo'],
+    link: { label: 'la web', href: 'https://sol-y-mar.softnova.es/pedir' },
+  },
+  {
+    slug: 'club-2030',
+    title: 'Club Activo 20-30',
+    client: 'Tilarán — Landing institucional',
+    year: '2026',
+    summary:
+      'Landing editorial para el Club Activo 20-30 Internacional de Tilarán, organización de servicio comunitario en Guanacaste. Narrativa cinematográfica guiada por el scroll: los videos avanzan y retroceden cuadro a cuadro con el desplazamiento y cada capítulo entra con animaciones reversibles.',
+    image: '/projects/club-2030.webp',
+    media: 'screen',
+    tag: 'Landing cinematográfica',
+    watermark: '20-30',
+    tagline: 'Una mano pequeña.',
+    metric: { value: 'Astro + GSAP', label: 'sitio estático en Cloudflare Pages' },
+    highlights: [
+      'Videos controlados por el scroll, cuadro a cuadro, en ambas direcciones',
+      'Videos recodificados con fotogramas clave cada 250 ms y cargados en memoria: cada salto es local',
+      'Capítulos con GSAP ScrollTrigger y desplazamiento suave con Lenis',
+      'HTML estático con una capa mínima de TypeScript: menú móvil, contadores y formulario',
+      'Feeds de Facebook e Instagram integrados',
+    ],
+    stack: ['Astro', 'TypeScript', 'GSAP', 'Lenis', 'Bunny CDN', 'Cloudflare Pages'],
+    link: { label: 'la web', href: 'https://club-20-30-tilaran.pages.dev/' },
+  },
+  {
+    slug: 'rugama',
+    title: 'Rugama Lavacar',
+    client: 'Lavacar — Ventas, órdenes y facturación',
+    year: '2025 — 2026',
+    summary:
+      'Sistema de gestión para un lavacar con varias sucursales: punto de venta con lector de código de barras, órdenes de servicio por vehículo asignadas al equipo, inventario y caja por sucursal, y facturación electrónica ante Hacienda de Costa Rica.',
+    image: '/projects/rugama.webp',
+    media: 'screen',
+    tag: 'Sistema para lavacar',
+    watermark: 'RUGAMA',
+    tagline: 'Cada vehículo, en orden.',
+    metric: { value: 'Multisucursal', label: 'inventario, precios y caja por sede' },
+    highlights: [
+      'Punto de venta con lector de código de barras, cotizaciones, descuentos y exoneraciones',
+      'Facturación electrónica v4.4: factura, tiquete y notas de crédito firmadas y enviadas a Hacienda',
+      'Órdenes de servicio por vehículo y cliente, con responsables e historial de estados',
+      'Inventario y precios por sucursal; caja con apertura, cierre, egresos y movimientos',
+      'Reportes de ventas, caja y órdenes exportables a Excel; instalable como app (PWA)',
+    ],
+    stack: ['React', 'Vite', 'TanStack Query', 'Zustand', 'Radix UI', 'Tailwind CSS', 'Node.js', 'Express', 'PostgreSQL', 'Sequelize', 'Docker'],
+    link: { label: 'la web', href: 'https://rugama.softnova.es/login' },
+  },
 ];
+
+/** Apps publicadas en Google Play / App Store (dato del hero). */
+export const storeApps = projects.filter((p) => p.link && /play\.google|apps\.apple/.test(p.link.href)).length;
 
 export type Job = {
   company: string;

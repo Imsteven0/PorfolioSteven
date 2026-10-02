@@ -1,5 +1,5 @@
 import { lazy, Suspense } from 'react';
-import { profile, projects } from '../content';
+import { profile, storeApps } from '../content';
 import { Loader } from './Loader';
 import { poke } from '../scene/store';
 const Stage = lazy(() => import('../scene/Stage'));
@@ -21,7 +21,7 @@ export function Hero() {
       <div className="hero-note"><span className="star-orbit" aria-hidden="true">✦</span><p>De la primera idea<br />a la última línea<br />de código.</p></div>
       <dl className="hero-stats">
         <div><dt>Años de<br />experiencia</dt><dd>{profile.yearsOfExperience}+</dd></div>
-        <div><dt>Apps en tiendas<br />oficiales</dt><dd>{projects.length.toString().padStart(2, '0')}</dd></div>
+        <div><dt>Apps en tiendas<br />oficiales</dt><dd>{storeApps.toString().padStart(2, '0')}</dd></div>
         <div><dt>Descargas en<br />tiendas</dt><dd>+400</dd></div>
       </dl>
     </aside>
