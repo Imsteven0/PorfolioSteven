@@ -1,0 +1,12 @@
+node_modules
+dist
+*.local
+*.tsbuildinfo
+
+# Herramientas locales
+.claude/
+.wrangler/
+.DS_Store
+
+# Exportación anterior del modelo 3D (reemplazada por la de 03-02-48)
+3d/3d-jutsu-Untitled-3D-Jutsu-2026-10-02-02-10-44.glb
