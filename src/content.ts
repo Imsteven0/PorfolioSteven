@@ -23,7 +23,6 @@ export const profile = {
 };
 
 export const about = [
-  `Soy ${profile.degree.toLowerCase()} graduado de la ${profile.university}. Mi pasión por el desarrollo de software comenzó en la universidad y desde entonces no he dejado de aprender.`,
   `Llevo más de ${yearsOfExperience} años construyendo aplicaciones web y móviles, tanto en empresas consolidadas como desarrollador freelance, adaptándome a entornos y necesidades de negocio muy distintas.`,
   'Me gusta crear soluciones escalables que resuelvan problemas reales. Soy proactivo, disfruto el trabajo en equipo y estoy en constante aprendizaje.',
 ];
@@ -66,7 +65,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'siao-movil',
-    title: 'SIAO Móvil',
+    title: 'DRAT Móvil',
     client: 'SENARA — Gestión de riego',
     year: 'App oficial',
     summary:

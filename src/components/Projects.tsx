@@ -6,7 +6,7 @@ export function Projects() {
     <div className="projects-grid">{projects.map((p, i) => <article key={p.slug} className={`project project-${p.slug}`} data-reveal>
       <a className="project-image" href={p.link?.href} target="_blank" rel="noopener noreferrer" aria-label={`Ver ${p.title} en ${p.link?.label}`}>
         <div className="project-media-top"><span>{p.title}</span><span>{i === 0 ? 'Plataforma integral' : 'App oficial · SENARA'}</span></div>
-        <span className="project-watermark" aria-hidden="true">{i === 0 ? 'ALFACO' : 'SIAO'}</span>
+        <span className="project-watermark" aria-hidden="true">{i === 0 ? 'ALFACO' : 'DRAT'}</span>
         <img src={p.image} alt={`Pantallas de ${p.title}`} width={800} height={950} loading="lazy" />
         <div className="project-media-bottom"><span>{i === 0 ? 'Beneficios. Sin límites.' : 'El campo, conectado.'}</span><span className="media-arrow" aria-hidden="true">↗</span></div>
       </a>

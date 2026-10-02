@@ -14,6 +14,6 @@ export function Contact() {
       <div className="contact-links" data-reveal="0.1">{links.map(link => <a key={link.label} href={link.href} target={link.href.startsWith('https') ? '_blank' : undefined} rel="noopener noreferrer"><span className="contact-icon"><ContactIcon type={link.icon} /></span><span><small>{link.label}</small>{link.value}</span><span className="contact-link-arrow" aria-hidden="true">↗</span></a>)}<p className="contact-location"><span className="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" aria-hidden="true"><path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z" /><circle cx="12" cy="10" r="2.5" /></svg></span>{profile.location} · Trabajo remoto</p></div>
       <div className="contact-art" aria-hidden="true"><span>Ideas en código.</span><p>LET'S<br /><span>BUILD.</span></p><span>Web & mobile / {new Date().getFullYear()}</span></div>
     </div>
-    <footer><p>© {new Date().getFullYear()} {profile.name}</p><p>Hecho con intención. Desde Costa Rica.</p><a href="#inicio">Volver arriba ↑</a></footer>
+    <footer><p>© {new Date().getFullYear()} {profile.name}</p><p>Pura vida, desde Costa Rica.</p><a href="#inicio">Volver arriba ↑</a></footer>
   </section>;
 }
